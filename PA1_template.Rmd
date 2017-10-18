@@ -35,10 +35,11 @@ hist(total_steps$steps, main="Histogram of total steps taken each day",
 
 
 ### Summary statistics for the total number of steps taken each day
+The mean number of steps taken each day is 10766 and the median number of steps taken each day is 10765
 ```{r MeanMedian}
 summary(total_steps$steps)
 ```
-The mean number of steps taken each day is 10766 and the median number of steps taken each day is 10765
+
 
 ### Time series plot of the average number of steps taken
 Averaging the total number of steps for each interval and then visualizing it through a time series plot
