@@ -27,7 +27,9 @@ data$date = as.Date(data$date, "%Y-%m-%d")
 Summing up the number of steps for each day and plotting it using a histogram
 ```{r Hist}
 total_steps <- aggregate(steps ~ date, data, sum)
-hist(total_steps$steps, main="Histogram of total steps taken each day", xlab="Date (October to November 2012)", ylab="Frequency",breaks = 10, col = "blue")
+hist(total_steps$steps, main="Histogram of total steps taken each day", 
+     xlab="Date (October to November 2012)", 
+     ylab="Frequency",breaks = 10, col = "blue")
 ```
 
 
@@ -41,8 +43,10 @@ The mean number of steps taken each day is 10766 and the median number of steps 
 Averaging the total number of steps for each interval and then visualizing it through a time series plot
 ```{r Tseries}
 mean_steps_interval <- aggregate(steps ~ interval, data, mean)
-plot(mean_steps_interval$interval, mean_steps_interval$steps, main="Time Series Plot of average steps taken each day", 
-     xlab="Date (October to November 2012)", ylab="Average", type="l", lwd=1)
+plot(mean_steps_interval$interval, mean_steps_interval$steps, 
+     main="Time Series Plot of average steps taken each day", 
+     xlab="Date (October to November 2012)", 
+     ylab="Average", type="l", lwd=1)
 ```
 
 
@@ -77,7 +81,9 @@ for (i in 1:nrow(data)) {
 ### Total number of steps taken each day after missing values are imputed
 ```{r Hist2}
 new_total_steps <- aggregate(steps ~ date, edited_data, sum)
-hist(new_total_steps$steps, main="Histogram of total steps taken each day", xlab="Date (October to November 2012)", ylab="Frequency",breaks = 10, col = "red")
+hist(new_total_steps$steps, main="Histogram of total steps taken each day", 
+     xlab="Date (October to November 2012)", 
+     ylab="Frequency",breaks = 10, col = "red")
 summary(new_total_steps$steps)
 ```
 The mean number of steps taken each day is 9354 and the median number of steps taken each day is 10395
@@ -100,6 +106,10 @@ weekday_steps_interval <- aggregate(steps ~ interval, weekday_data, mean)
 weekend_steps_interval <- aggregate(steps ~ interval, weekend_data, mean)
 
 par(mfrow=c(2,1), mai = c(0.5, 0.5, 0.5, 0.5))
-plot(weekday_steps_interval$interval, weekday_steps_interval$steps, type = "l", main = "Average Number of Steps during Weekdays", xlab = "Interval", ylab = "Frequency", col = "blue")
-plot(weekend_steps_interval$interval, weekend_steps_interval$steps, type = "l", main = "Average Number of Steps during Weekends", xlab = "Interval", ylab = "Frequency", col = "red")
+plot(weekday_steps_interval$interval, weekday_steps_interval$steps, type = "l", 
+     main = "Average Number of Steps during Weekdays", 
+     xlab = "Interval", ylab = "Frequency", col = "blue")
+plot(weekend_steps_interval$interval, weekend_steps_interval$steps, type = "l", 
+     main = "Average Number of Steps during Weekends", 
+     xlab = "Interval", ylab = "Frequency", col = "red")
 ```
