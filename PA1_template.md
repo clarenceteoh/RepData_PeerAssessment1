@@ -21,7 +21,9 @@ Summing up the number of steps for each day and plotting it using a histogram
 
 ```r
 total_steps <- aggregate(steps ~ date, data, sum)
-hist(total_steps$steps, main="Histogram of total steps taken each day", xlab="Date (October to November 2012)", ylab="Frequency",breaks = 10, col = "blue")
+hist(total_steps$steps, main="Histogram of total steps taken each day", 
+     xlab="Date (October to November 2012)", 
+     ylab="Frequency",breaks = 10, col = "blue")
 ```
 
 ![](PA1_template_files/figure-html/Hist-1.png)<!-- -->
@@ -44,8 +46,10 @@ Averaging the total number of steps for each interval and then visualizing it th
 
 ```r
 mean_steps_interval <- aggregate(steps ~ interval, data, mean)
-plot(mean_steps_interval$interval, mean_steps_interval$steps, main="Time Series Plot of average steps taken each day", 
-     xlab="Date (October to November 2012)", ylab="Average", type="l", lwd=1)
+plot(mean_steps_interval$interval, mean_steps_interval$steps, 
+     main="Time Series Plot of average steps taken each day", 
+     xlab="Date (October to November 2012)", 
+     ylab="Average", type="l", lwd=1)
 ```
 
 ![](PA1_template_files/figure-html/Tseries-1.png)<!-- -->
@@ -89,7 +93,9 @@ for (i in 1:nrow(data)) {
 
 ```r
 new_total_steps <- aggregate(steps ~ date, edited_data, sum)
-hist(new_total_steps$steps, main="Histogram of total steps taken each day", xlab="Date (October to November 2012)", ylab="Frequency",breaks = 10, col = "red")
+hist(new_total_steps$steps, main="Histogram of total steps taken each day", 
+     xlab="Date (October to November 2012)", 
+     ylab="Frequency",breaks = 10, col = "red")
 ```
 
 ![](PA1_template_files/figure-html/Hist2-1.png)<!-- -->
@@ -123,8 +129,12 @@ weekday_steps_interval <- aggregate(steps ~ interval, weekday_data, mean)
 weekend_steps_interval <- aggregate(steps ~ interval, weekend_data, mean)
 
 par(mfrow=c(2,1), mai = c(0.5, 0.5, 0.5, 0.5))
-plot(weekday_steps_interval$interval, weekday_steps_interval$steps, type = "l", main = "Average Number of Steps during Weekdays", xlab = "Interval", ylab = "Frequency", col = "blue")
-plot(weekend_steps_interval$interval, weekend_steps_interval$steps, type = "l", main = "Average Number of Steps during Weekends", xlab = "Interval", ylab = "Frequency", col = "red")
+plot(weekday_steps_interval$interval, weekday_steps_interval$steps, type = "l", 
+     main = "Average Number of Steps during Weekdays", 
+     xlab = "Interval", ylab = "Frequency", col = "blue")
+plot(weekend_steps_interval$interval, weekend_steps_interval$steps, type = "l", 
+     main = "Average Number of Steps during Weekends", 
+     xlab = "Interval", ylab = "Frequency", col = "red")
 ```
 
 ![](PA1_template_files/figure-html/panel-1.png)<!-- -->
