@@ -33,8 +33,10 @@ hist(total_steps$steps, main="Histogram of total steps taken each day", xlab="Da
 summary(total_steps$steps)
 ```
 
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-     41    8841   10765   10766   13294   21194 
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##      41    8841   10765   10766   13294   21194
+```
 The mean number of steps taken each day is 10766 and the median number of steps taken each day is 10765
 
 ### Time series plot of the average number of steps taken
@@ -56,7 +58,9 @@ max_index <- which(mean_steps_interval$steps == max(mean_steps_interval$steps))
 mean_steps_interval[max_index,1]
 ```
 
-[1] 835
+```
+## [1] 835
+```
 The 835th interval contains the maximum number of steps
 
 ### Method for imputing missing data
@@ -94,8 +98,10 @@ hist(new_total_steps$steps, main="Histogram of total steps taken each day", xlab
 summary(new_total_steps$steps)
 ```
 
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-      0    6778   10395    9354   12811   21194 
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##       0    6778   10395    9354   12811   21194
+```
 The mean number of steps taken each day is 9354 and the median number of steps taken each day is 10395
 
 ### Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends

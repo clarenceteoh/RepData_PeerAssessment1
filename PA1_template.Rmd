@@ -8,7 +8,6 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(results = "asis")
 ```
 
 ### Introduction
@@ -28,36 +27,31 @@ data$date = as.Date(data$date, "%Y-%m-%d")
 Summing up the number of steps for each day and plotting it using a histogram
 ```{r Hist}
 total_steps <- aggregate(steps ~ date, data, sum)
-hist(total_steps$steps, main="Histogram of total steps taken each day", 
-     xlab="Date (October to November 2012)", 
-     ylab="Frequency",breaks = 10, col = "blue")
+hist(total_steps$steps, main="Histogram of total steps taken each day", xlab="Date (October to November 2012)", ylab="Frequency",breaks = 10, col = "blue")
 ```
 
 
 ### Summary statistics for the total number of steps taken each day
-The mean number of steps taken each day is 10766 and the median number of steps taken each day is 10765
 ```{r MeanMedian}
 summary(total_steps$steps)
 ```
-
+The mean number of steps taken each day is 10766 and the median number of steps taken each day is 10765
 
 ### Time series plot of the average number of steps taken
 Averaging the total number of steps for each interval and then visualizing it through a time series plot
 ```{r Tseries}
 mean_steps_interval <- aggregate(steps ~ interval, data, mean)
-plot(mean_steps_interval$interval, mean_steps_interval$steps, 
-     main="Time Series Plot of average steps taken each day", 
-     xlab="Date (October to November 2012)", 
-     ylab="Average", type="l", lwd=1)
+plot(mean_steps_interval$interval, mean_steps_interval$steps, main="Time Series Plot of average steps taken each day", 
+     xlab="Date (October to November 2012)", ylab="Average", type="l", lwd=1)
 ```
 
 
 ### The 5-minute interval that, on average, contains the maximum number of steps
-The 835th interval contains the maximum number of steps
 ```{r MaxInterval}
 max_index <- which(mean_steps_interval$steps == max(mean_steps_interval$steps))
 mean_steps_interval[max_index,1]
 ```
+The 835th interval contains the maximum number of steps
 
 ### Method for imputing missing data
 First, the average number of steps of each day is calculated. Next, NA values corresponding to a particular day are replaced by its averaged value. If all the values for a particular day are NA, then the average step for that is zero.
@@ -81,15 +75,12 @@ for (i in 1:nrow(data)) {
 
 
 ### Total number of steps taken each day after missing values are imputed
-The mean number of steps taken each day is 9354 and the median number of steps taken each day is 10395
 ```{r Hist2}
 new_total_steps <- aggregate(steps ~ date, edited_data, sum)
-hist(new_total_steps$steps, main="Histogram of total steps taken each day", 
-     xlab="Date (October to November 2012)", 
-     ylab="Frequency",breaks = 10, col = "red")
+hist(new_total_steps$steps, main="Histogram of total steps taken each day", xlab="Date (October to November 2012)", ylab="Frequency",breaks = 10, col = "red")
 summary(new_total_steps$steps)
 ```
-
+The mean number of steps taken each day is 9354 and the median number of steps taken each day is 10395
 
 ### Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
 ```{r panel}
@@ -109,10 +100,6 @@ weekday_steps_interval <- aggregate(steps ~ interval, weekday_data, mean)
 weekend_steps_interval <- aggregate(steps ~ interval, weekend_data, mean)
 
 par(mfrow=c(2,1), mai = c(0.5, 0.5, 0.5, 0.5))
-plot(weekday_steps_interval$interval, weekday_steps_interval$steps, type = "l", 
-     main = "Average Number of Steps during Weekdays", 
-     xlab = "Interval", ylab = "Frequency", col = "blue")
-plot(weekend_steps_interval$interval, weekend_steps_interval$steps, type = "l", 
-     main = "Average Number of Steps during Weekends", 
-     xlab = "Interval", ylab = "Frequency", col = "red")
+plot(weekday_steps_interval$interval, weekday_steps_interval$steps, type = "l", main = "Average Number of Steps during Weekdays", xlab = "Interval", ylab = "Frequency", col = "blue")
+plot(weekend_steps_interval$interval, weekend_steps_interval$steps, type = "l", main = "Average Number of Steps during Weekends", xlab = "Interval", ylab = "Frequency", col = "red")
 ```
