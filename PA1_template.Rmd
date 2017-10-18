@@ -27,8 +27,8 @@ Summing up the number of steps for each day and plotting it using a histogram
 ```{r Hist}
 total_steps <- aggregate(steps ~ date, data, sum)
 hist(total_steps$steps, main="Histogram of total steps taken each day", 
-    xlab="Date (October to November 2012)", 
-    ylab="Frequency",breaks = 10, col = "blue")
+     xlab="Date (October to November 2012)", 
+     ylab="Frequency",breaks = 10, col = "blue")
 ```
 
 
@@ -79,7 +79,9 @@ for (i in 1:nrow(data)) {
 ### Total number of steps taken each day after missing values are imputed
 ```{r Hist2}
 new_total_steps <- aggregate(steps ~ date, edited_data, sum)
-hist(new_total_steps$steps, main="Histogram of total steps taken each day", xlab="Date (October to November 2012)", ylab="Frequency",breaks = 10, col = "red")
+hist(new_total_steps$steps, main="Histogram of total steps taken each day", 
+     xlab="Date (October to November 2012)", 
+     ylab="Frequency",breaks = 10, col = "red")
 summary(new_total_steps$steps)
 ```
 The mean number of steps taken each day is 9354 and the median number of steps taken each day is 10395
@@ -101,7 +103,9 @@ weekday_steps_interval <- aggregate(steps ~ interval, weekday_data, mean)
 
 weekend_steps_interval <- aggregate(steps ~ interval, weekend_data, mean)
 
-plot(weekday_steps_interval$interval, weekday_steps_interval$steps, type = "l", main = "Comparison of the Average Number of Steps\n between Weekdays and Weekends", xlab = "Interval", ylab = "Frequency", col = "red")
-lines(weekend_steps_interval$interval, weekend_steps_interval$steps, col = "blue")
-legend("topright", c("Weekday", "Weekend"), col = c("red", "blue"), lty = 2)
+plot(weekday_steps_interval$interval, weekday_steps_interval$steps, type = "l", 
+     main = "Comparison of the Average Number of Steps\n between Weekdays and Weekends", 
+     xlab = "Interval", ylab = "Frequency", col = "red")
+     lines(weekend_steps_interval$interval, weekend_steps_interval$steps, col = "blue")
+     legend("topright", c("Weekday", "Weekend"), col = c("red", "blue"), lty = 2)
 ```
