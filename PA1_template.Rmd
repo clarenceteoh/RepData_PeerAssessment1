@@ -26,7 +26,9 @@ data$date = as.Date(data$date, "%Y-%m-%d")
 Summing up the number of steps for each day and plotting it using a histogram
 ```{r Hist}
 total_steps <- aggregate(steps ~ date, data, sum)
-hist(total_steps$steps, main="Histogram of total steps taken each day", xlab="Date (October to November 2012)", ylab="Frequency",breaks = 10, col = "blue")
+hist(total_steps$steps, main="Histogram of total steps taken each day", 
+    xlab="Date (October to November 2012)", 
+    ylab="Frequency",breaks = 10, col = "blue")
 ```
 
 
@@ -40,7 +42,8 @@ The mean number of steps taken each day is 10766 and the median number of steps 
 Averaging the total number of steps for each interval and then visualizing it through a time series plot
 ```{r Tseries}
 mean_steps_interval <- aggregate(steps ~ interval, data, mean)
-plot(mean_steps_interval$interval, mean_steps_interval$steps, main="Time Series Plot of average steps taken each day", 
+plot(mean_steps_interval$interval, mean_steps_interval$steps, 
+     main="Time Series Plot of average steps taken each day", 
      xlab="Date (October to November 2012)", ylab="Average", type="l", lwd=1)
 ```
 
